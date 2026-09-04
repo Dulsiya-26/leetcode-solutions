@@ -1,0 +1,16 @@
+class Solution {
+    public String kthLargestNumber(String[] nums, int k) {
+        List<String>li=new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            li.add(nums[i]);
+        }
+        Collections.sort(li,(a,b)->{
+        if(a.length()!=b.length()){
+            return a.length()-b.length();
+        }
+        return a.compareTo(b);
+    });
+    int n=li.size();
+    return li.get(n-k);
+    }
+}
