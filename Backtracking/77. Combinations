@@ -1,0 +1,23 @@
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=i+1;
+        }
+        List<List<Integer>>result=new ArrayList<>();
+        backtrack(arr,0,new ArrayList<>(),k,result);
+        return result;
+    }
+    public void backtrack(int[] arr,int index,List<Integer>current,int k,List<List<Integer>>result){
+      for(int i=index;i<arr.length;i++){
+        current.add(arr[i]);
+        if(current.size()==k){
+            result.add(new ArrayList<>(current));
+        }
+        else{
+            backtrack(arr,i+1,current,k,result);
+        }
+        current.remove(current.size()-1);
+      }
+    }
+}
